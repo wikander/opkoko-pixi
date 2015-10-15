@@ -40,6 +40,14 @@ function setup() {
   wall.position.x = 800;
   wall.alpha = 0.3;
 
+  var text = new PIXI.Text('Tranås 2015', {
+    font : '36px Arial',
+    fill : 0x000000 ,
+    align : 'center'
+  });
+  text.position.x = 15;
+  text.position.y = 15;
+
   // Info
   Logo.info();
   Stickman.info();
@@ -48,6 +56,7 @@ function setup() {
   stage.addChild(stickmanAnimation);
   stage.addChild(wall);
   //stage.addChild(logoContainer);
+  stage.addChild(text);
 
   renderer.render(stage);
 
