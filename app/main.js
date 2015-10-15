@@ -25,4 +25,15 @@ function setup() {
   stage.addChild(logoContainer);
 
   renderer.render(stage);
+
+  animate();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  Logo.logoAnimationStep();
+  Logo.dotAnimationStep();
+
+  renderer.render(stage);
 }
