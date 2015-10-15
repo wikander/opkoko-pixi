@@ -17,6 +17,7 @@ function setup() {
 
   logoContainer = Logo.initContainer();
   logoContainer = Logo.createLogo(10, 10);
+  logoContainer = Logo.createDot(990, 490);
 
   // Info
   Logo.info();
