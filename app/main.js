@@ -10,16 +10,16 @@ var Logo = require('logo'),
 
 PIXI.loader
   .add(Logo.logoImgSrc)
+  .add(Stickman.stickmanTextureAtlas)
   .add(backgroundImg)
   .add(wallImg)
-  .add(Stickman.stickmanTextureAtlasSrc)
   .load(setup);
 
 function setup() {
   var logoContainer,
+    stickmanAnimation,
     background,
-    wall,
-    stickmanAnimation;
+    wall;
 
   renderer.backgroundColor = 0xFFFFFF;
   document.body.appendChild(renderer.view);
@@ -27,6 +27,8 @@ function setup() {
   logoContainer = Logo.initContainer();
   logoContainer = Logo.createLogo(10, 10);
   logoContainer = Logo.createDot(990, 490);
+
+  stickmanAnimation = Stickman.initAnimation(500, 500);
 
   background = new PIXI.Sprite(
     PIXI.loader.resources[backgroundImg].texture
@@ -38,8 +40,6 @@ function setup() {
   wall.position.x = 800;
   wall.alpha = 0.3;
 
-  stickmanAnimation = Stickman.initAnimation(500, 500);
-
   // Info
   Logo.info();
   Stickman.info();
@@ -48,6 +48,19 @@ function setup() {
   stage.addChild(stickmanAnimation);
   stage.addChild(wall);
   //stage.addChild(logoContainer);
+
+  renderer.render(stage);
+
+  animate();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  //Logo.logoAnimation();
+  //Logo.dotAnimationStep();
+
+  Stickman.move();
 
   renderer.render(stage);
 }
