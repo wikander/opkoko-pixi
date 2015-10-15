@@ -1,15 +1,15 @@
 var Logo = (function() {
   var logoImg = require('./img/op-logo-black-no-dot.png'),
+    Bezier = require('bezier-js/lib/index.js'),
     logo,
     logoContainer = new PIXI.Container(),
     logoCenter = new PIXI.Point(100, 38.5),
-    dotRadius = 6.7,
-    dot,
-    Bezier = require('bezier-js/lib/index.js'),
     dotFinalPosition = new PIXI.Point(172, 70),
+    dotRadius = 6.7,
     dasProgress = 0,
     lasProgress = 0,
     dotAnimationPositions = [],
+    dot,
     dotAnimationStarted = false,
     logoAnimationStarted = false;
 
@@ -65,7 +65,7 @@ var Logo = (function() {
       logoAnimationStarted = true;
     }
   }
-
+  
   function dotAnimationStep() {
     if (dotAnimationStarted && dasProgress < dotAnimationPositions.length - 1) {
       dasProgress++;
@@ -74,7 +74,7 @@ var Logo = (function() {
     }
   }
 
-  function logoAnimationStep() {
+  function logoAnimation() {
     if (logoAnimationStarted) {
       var startPosition = new PIXI.Point(0, 0),
         finalPosition = new PIXI.Point(500 - logoCenter.x, 250 - logoCenter.y),
@@ -109,7 +109,7 @@ var Logo = (function() {
     dotAnimationStep: dotAnimationStep,
     info: info,
     initContainer: initContainer,
-    logoAnimationStep: logoAnimationStep,
+    logoAnimation: logoAnimation,
 
     // Variables
     logoImgSrc: logoImg
