@@ -14,3 +14,6 @@
 ## Build distribution
 1. npm run build
 2. build is located in /dist
+
+## Known bugs
+1. From PIXI version 3.0.7 -> 3.0.8, the behaviour of MovieClip.stop did change. Change row 81 in stickman.js from "stickmanAnimation.stop();" to "stickmanAnimation.gotoAndStop(0);" for the expectd behaviour.
